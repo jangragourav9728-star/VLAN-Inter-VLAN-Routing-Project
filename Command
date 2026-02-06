@@ -1,0 +1,68 @@
+###ROUTER COMMANDS (Inter-VLAN Routing – Router on a Stick)###
+ enable
+configure terminal
+
+interface gigabitEthernet0/0/0
+no shutdown
+exit
+
+interface gigabitEthernet0/0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+
+interface gigabitEthernet0/0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+exit
+
+exit
+show ip interface brief
+###SWITCH COMMANDS (VLAN + Trunk)###
+ 
+ enable
+configure terminal
+
+vlan 10
+name IT
+exit
+
+vlan 20
+name HR
+exit
+
+interface fastEthernet0/1
+switchport mode access
+switchport access vlan 10
+exit
+
+interface fastEthernet0/2
+switchport mode access
+switchport access vlan 20
+exit
+
+interface fastEthernet0/24
+switchport mode trunk
+exit
+
+exit
+show vlan brief
+show interfaces trunk
+
+ ##PC CONFIGURATION###
+{PC0 (VLAN 10 – IT)}
+ IP Address: 192.168.10.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.10.1
+   
+  {PC1 (VLAN 20 – HR)}
+ IP Address: 192.168.20.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.20.1
+    ###VERIFICATION COMMANDS###
+    show ip route
+show ip interface brief
+ping 192.168.20.2
+ping 192.168.10.2
+    
+   
