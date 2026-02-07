@@ -1,0 +1,58 @@
+# VLAN & Inter-VLAN Routing using Router-on-a-Stick
+
+## 📌 Project Overview
+This project demonstrates the implementation of VLANs and Inter-VLAN routing using the Router-on-a-Stick technique in Cisco Packet Tracer. The network is segmented into multiple VLANs, and communication between them is enabled using router sub-interfaces with IEEE 802.1Q encapsulation.
+
+---
+
+## 🎯 Objectives
+- Create multiple VLANs on a Layer 2 switch
+- Assign switch ports to specific VLANs
+- Configure trunking between switch and router
+- Implement Inter-VLAN routing using a single router interface
+- Verify communication between devices in different VLANs
+
+---
+
+## 🧠 Network Design
+- **VLAN 10 – IT Department**
+- **VLAN 20 – HR Department**
+- **Switch:** Cisco 2960
+- **Router:** Cisco PT Router
+- **Routing Method:** Router-on-a-Stick
+
+---
+
+## 🖥️ IP Addressing Scheme
+
+| Device | VLAN | IP Address | Subnet Mask | Gateway |
+|------|------|-----------|-------------|---------|
+| PC0 | 10 | 192.168.10.2 | 255.255.255.0 | 192.168.10.1 |
+| PC1 | 20 | 192.168.20.2 | 255.255.255.0 | 192.168.20.1 |
+| Router G0/0/0.10 | 10 | 192.168.10.1 | 255.255.255.0 | — |
+| Router G0/0/0.20 | 20 | 192.168.20.1 | 255.255.255.0 | — |
+
+---
+
+## ⚙️ Configuration Summary
+
+### 🔹 Switch Configuration
+- VLAN creation
+- Access port assignment
+- Trunk configuration on router-facing port
+
+### 🔹 Router Configuration
+- Sub-interfaces creation
+- 802.1Q encapsulation
+- IP addressing for each VLAN
+
+---
+
+## 🧪 Verification
+- Successful ping between PC0 and PC1
+- VLAN isolation confirmed
+- Inter-VLAN routing working correctly
+
+---
+
+## 📂 Project Structure
